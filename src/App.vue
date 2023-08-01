@@ -10,6 +10,7 @@ for (let i = 0; i <= 390; i++) {
 <template>
   <div class="box">
     <h1>asdsa</h1>
+    <h2>新增标题</h2>
   </div>
   <HelloWorld msg="Vite + Vue" />
 </template>
