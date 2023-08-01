@@ -2,6 +2,10 @@
 import HelloWorld from './components/HelloWorld.vue'
 const str = 'i love you'
 console.log(str)
+for (let i = 0; i <= 390; i++) {
+  console.log(i);
+
+}
 </script>
 
 <template>
