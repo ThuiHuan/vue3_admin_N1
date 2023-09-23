@@ -1,41 +1,10 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-const str = 'i love you'
-console.log(str)
-for (let i = 0; i <= 390; i++) {
-  console.log(i)
-}
-</script>
-
 <template>
-  <div class="box">
-    <h1>asdsa</h1>
-    <h2>新增标题</h2>
+  <div>
+    <router-view></router-view>
+    <!-- <svg-icon name="home" color="pink" width="200px" height="200px" /> -->
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped lang="sass">
-.box{
-  width: 600px;
-  height: 400px;
-  background-color: red;
-  h1{
-    color: black
-    }
-  }
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
+<script setup lang="ts"></script>
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>
+<style scoped lang="scss"></style>

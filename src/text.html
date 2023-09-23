@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 100vw;
+        height: 100vh;
+        background-color: pink;
+        background: url(../src/assets/images/background.jpg) no-repeat;
+        background-size: cover;
+      }
+      .box {
+        width: 1920px;
+        height: 1080px;
+        transform-origin: left top;
+        background-color: #ccc;
+        /* 盒子缩放的奇点放到左上角 */
+        position: fixed;
+        /* 移动到正中间 */
+        left: 50%;
+        top: 50%;
+      }
+      .top {
+        /* 200px */
+        width: 5.21vw;
+        height: 9.26vh;
+        background-color: red;
+      }
+      .bottom {
+        margin-top: 2.1vw;
+        width: 5.21vw;
+        height: 9.26vh;
+        background-color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box" id="box">
+        <div class="top">测测测试</div>
+        <div class="bottom">很好很好</div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  // 控制数据大屏的放大与缩小
+  let box = document.querySelector('.box')
+
+  //   缩放后讲奇点拽回去（在页面上缩放，然后还原位置）
+  box.style.transform = `scale(${getscales()}) translate(-50%,-50%)`
+  // 计算缩放比例
+  function getscales(w = 1920, h = 1080) {
+    // 设备视口/原型图=放大(缩小)的倍数
+    const ww = window.innerWidth / w
+    const wh = window.innerHeight / h
+    // ww<wh 视口宽度变小/视口高度变大
+    // ww>wh 视口宽度变大/视口高度变小
+    // 视口宽度变小，保证宽度；视口宽度变大,保证高度/视口高度变大，保证高度；视口高度变小，保证宽度
+    return ww < wh ? ww : wh
+  }
+  //   浏览器窗口发生变化时触发
+  window.onresize = () => {
+    //   缩放后讲奇点拽回去（在页面上缩放，然后还原位置）
+    box.style.transform = `scale(${getscales()}) translate(-50%,-50%)`
+  }
+</script>
