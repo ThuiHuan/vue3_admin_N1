@@ -10,18 +10,24 @@
       <span class="rbtn">统计报告</span>
       <span class="time">当前时间:{{ time }}</span>
     </div>
-  </div>
+</div>
 </template>
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import moment from 'moment'
 import { ref, onMounted, onBeforeMount } from 'vue'
+import * as echarts from 'echarts';
+interface Props {
+  deleteItem: () => void;
+}
+
+const props = defineProps<Props>();
+
 // 获取路由器对象
 let $router = useRouter()
 const goHome = () => {
-  // 释放cpu缓存
-  echartsInstance. dispose()
+  props.deleteItem()
   // 路由跳转
   $router.push('home')
 }
@@ -33,10 +39,12 @@ onMounted(() => {
   setInterval(() => {
     time.value = moment().format('YYYY年-MM月-DD日 HH:mm:ss')
   }, 1000)
+
 })
 onBeforeMount(() => {
   clearInterval(timer.value)
 })
+
 </script>
 
 <style scoped lang="scss">
@@ -49,7 +57,7 @@ $color: #04c9ff;
   .left {
     flex: 1;
     background: url(../../images/dataScreen-header-left-bg.png) no-repeat;
-    background-size: cover;
+    background-size: cover; 
     span {
       width: 150px;
       height: 40px;

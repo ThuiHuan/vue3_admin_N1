@@ -3,8 +3,8 @@
     <div class="container">
       <!-- 内容区域 -->
       <div class="screen" ref="screen">
-        <div class="top">
-          <Top></Top>
+        <div class="top" >
+          <Top :deleteItem="deleteItem"></Top>
         </div>
         <div class="bottom">
           <div class="left">
@@ -26,7 +26,6 @@
     </div>
   </div>
 </template>
-
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
 // 引入顶部子组件
@@ -42,8 +41,25 @@ import Line from './components/center/line/index.vue'
 import Hot from './components/right/hot/index.vue'
 import Years from './components/right/years/index.vue'
 import Way from './components/right/way/index.vue'
+import * as echarts from 'echarts'
+ 
+/**
+ * 删除图表
+ *
+ * 初始化并销毁给定的图表实例
+ */
+const delet=()=>{
+    var myChart = echarts.init(screen.value);
+    myChart.dispose()
+  }
+  // 调用子组件的回调
+const deleteItem = ()=>{
+    delet()
+  }
 // 获取DOM
 let screen = ref()
+
+
 onMounted(() => {
   screen.value.style.transform = `scale(${getScale()}) translate(-50%,-50%)`
 })
@@ -57,6 +73,7 @@ function getScale(w = 1920, h = 1080) {
 window.onresize = () => {
   screen.value.style.transform = `scale(${getScale()}) translate(-50%,-50%)`
 }
+
 </script>
 
 <style scoped lang="scss">
