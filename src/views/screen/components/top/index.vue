@@ -20,6 +20,8 @@ import { ref, onMounted, onBeforeMount } from 'vue'
 // 获取路由器对象
 let $router = useRouter()
 const goHome = () => {
+  // 释放cpu缓存
+  echartsInstance. dispose()
   // 路由跳转
   $router.push('home')
 }

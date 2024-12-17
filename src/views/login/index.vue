@@ -70,7 +70,7 @@ let useStore = useUserStore()
 // 获取路由器
 let $router = useRouter()
 // 收集账号和密码的数据
-let loginForm = reactive({ username: 'admin', password: 'atguigu123' })
+let loginForm = reactive({ username: 'admin', password: '111111' })
 // 登录按钮的回调函数
 const login = async () => {
   // 保证校验通过再发请求
